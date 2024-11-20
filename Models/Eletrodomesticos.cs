@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcoWatt.Models
 {
+    [Table("_Eletrodomesticos")]
     public class Eletrodomesticos
     {
         [Key]

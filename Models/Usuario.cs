@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcoWatt.Models
 {
+    [Table("_Usuario")]
     public class Usuario
     {
         [Key]
@@ -12,7 +13,7 @@ namespace EcoWatt.Models
         [Column("ds_email")]
         public string Email { get; set; } = string.Empty;
         [Column("cd_senha")]
-        public int Senha { get; set; }
+        public string Senha { get; set; }
         [Column("cd_cep")]
         public string CEP {  get; set; } 
     }
