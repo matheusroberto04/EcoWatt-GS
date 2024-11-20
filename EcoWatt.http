@@ -1,0 +1,6 @@
+@EcoWatt_HostAddress = http://localhost:5222
+
+GET {{EcoWatt_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
