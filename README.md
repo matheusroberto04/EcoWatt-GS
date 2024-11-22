@@ -25,17 +25,13 @@
 `GET` /usuário
 Listagem de todos os usuários cadastrados
 
-`CPF`
-
 `Nome`
-
-`Logradouro`
-
-`Ramo de atuacao`
 
 `Email`
 
 `Senha`
+
+`CEP`
 
 **Códigos de status**
 
@@ -60,12 +56,11 @@ Cadastra um novo usuário
 
 | Campo | Tipo | Obrigatório | Descrição
 |-------|------|:-------------:|-----------
-|CPF|String|✅|Inserir um CPF para o novo cliente.
-|Nome|String|✅|Inserir um nome curto para identificar o novo cliente.
-|Logradouro|String|✅|Inserir um endereço.
-|Ramo de atuação|String|✅|Inserir o ramo de atuação que o cliente participa.
+|Nome|String|✅|Inserir um nome curto para identificar o novo usuario.
 |Email|String|✅|Adicionar o email.
-|Senha|Int|✅|Inserir uma senha.
+|Senha|String|✅|Inserir uma senha.
+|CEP|String|✅|Inserir um CEP.
+
 ---
 `DELETE` /usuário/{id}
 
@@ -85,12 +80,10 @@ Atualiza o cadastro com o `id` informado.
 
 | Campo | Tipo | Obrigatório | Descrição
 |-------|------|:-------------:|-----------
-|CPF|String|✅|Atualiza o CPF do cliente.
-|Nome|String|✅|Atualize o nome do cliente.
-|Logradouro|String|✅|Atualiza o endereço.
-|Ramo de atuação|String|✅|Atualiza o ramo de atuação do cliente.
-|Email|String|✅|Atualiza o email.
-|Senha|Int|✅|Atualiza a senha.
+|Nome|String|✅|Inserir um nome curto para identificar o novo usuario.
+|Email|String|✅|Adicionar o email.
+|Senha|String|✅|Inserir uma senha.
+|CEP|String|✅|Inserir um CEP.
 
 **Códigos de status**
 
@@ -106,33 +99,30 @@ Atualiza o cadastro com o `id` informado.
 
 ```js
 {
-    "clienteId": 1,
-    "CPF":"24029345096",
-    "nome": "Cleiton Rasta",
-    "logradouro": "Rua Cleberson"
-    "ramo de atuacao": "games"
+    "usuarioId": 1,
+    "Nome": "Cleiton Rasta",
     "email": "robeerson@gmail.com"
-    "senha": "234"
+    "senha": "234",
+    "CEP": "45687954"
 }
 ```
 
-### CONSULTORIA
+### Eletrodomesticos
 
-`GET` /consultoria
+`GET` /eletrodomesticos
+Lista todos eletrodomesticos
 
-Lista todas as consultorias
+´Eletrodomesticos Id´
 
-´Consultoria Id´
-
-´Nome da consultoria´
+´Nome do eletrodomestico´
 
 `200` sucesso
 
 ---
 
-`GET` /consultoria/{id}
+`GET` /eletrodomesticos/{id}
 
-Sistema retorna os detalhes da consultoria com o `id` informado.
+Sistema retorna os detalhes do eletrodomestico com o `id` informado.
 
 **Códigos de status**
 
@@ -140,13 +130,16 @@ Sistema retorna os detalhes da consultoria com o `id` informado.
 `404` id não encontrado
 
 ---
-`POST` /consultoria
+`POST` /eletrodomesticos
 
-Adiciona uma nova consultoria no sistema do Target Customer.
+Adiciona um novo eletrodomestico no sistema do EcoWatt.
 
 | Campo | Tipo | Obrigatório | Descrição
 |-------|------|:-------------:|-----------
-|Nome Consultoria|String|✅|Cria uma nova consultoria.
+|Nome aparelho|String|✅|Cria um novo eletrodomestico.
+|Valor do consumo|Int|✅|Adiciona um valor de consumo do eletrodomestico.
+|Categoria|String|✅|Adiciona uma categoria do eletrodomestico.
+|Modelo|String|✅|Adiciona o modelo do eletrodomestico.
 
 **Códigos de status**
 
@@ -155,9 +148,9 @@ Adiciona uma nova consultoria no sistema do Target Customer.
 
 ---
 
-`DELETE` /consultoria/{id}
+`DELETE` /eletrodomesticos/{id}
 
-Apaga a consultoria atraves do `id` informado.
+Apaga o eletrodomestico atraves do `id` informado.
 
 **Códigos de status**
 
@@ -166,13 +159,16 @@ Apaga a consultoria atraves do `id` informado.
 
 ---
 
-`PUT` /consultoria/{id} 
+`PUT` /eletrodomesticos/{id} 
 
 Altera a consultoria com o `id` informado.
 
 | Campo | Tipo | Obrigatório | Descrição
 |-------|------|:-------------:|-----------
-|Nome Consultoria|String|✅|Altera o nome da consultoria.
+|Nome aparelho|String|✅|Atualiza um novo eletrodomestico.
+|Valor do consumo|Int|✅|Atualiza um valor de consumo do eletrodomestico.
+|Categoria|String|✅|Atualiza uma categoria do eletrodomestico.
+|Modelo|String|✅|Atualiza o modelo do eletrodomestico.
 
 **Códigos de status**
 
@@ -186,11 +182,90 @@ Altera a consultoria com o `id` informado.
 
 ```js
 {
-    "consultoriaId": 1,
-    "nomeConsultoria": "Novo game star wars"
+    "eletrodomesticoId": 1,
+    "Nome": "Iphone 13 Pro Max",
+    "Valor_consumo": 15,
+    "categoria": "Celular",
+    "model": "13 Pro Max"
 }
 ```
+### Consumo
 
+`GET` /consumo
+Lista todos os consumos
+
+´Consumo Id´
+
+`200` sucesso
+
+---
+
+`GET` /consumo/{id}
+
+Sistema retorna os detalhes dos consumos com o `id` informado.
+
+**Códigos de status**
+
+`200` sucesso
+`404` id não encontrado
+
+---
+`POST` /consumo
+
+Adiciona um novo consumo no sistema do EcoWatt.
+
+| Campo | Tipo | Obrigatório | Descrição
+|-------|------|:-------------:|-----------
+|Data consumo|DateTime|✅|Cria uma nova data do consumo.
+|Hora consumo|String|✅|Adiciona uma hora ao consumo do eletrodomestico.
+|Quantidade Watts|Int|✅|Adiciona uma quantidade de Watts gerada pelo eletrodomestico.
+
+**Códigos de status**
+
+`201` Criado com sucesso
+`400` Validação falhou
+
+---
+
+`DELETE` /consumo/{id}
+
+Apaga o consumo atraves do `id` informado.
+
+**Códigos de status**
+
+`204` Apagado com sucesso
+`404` Id não encontrado 
+
+---
+
+`PUT` /consumo/{id} 
+
+Altera o consumo com o `id` informado.
+
+| Campo | Tipo | Obrigatório | Descrição
+|-------|------|:-------------:|-----------
+|Data consumo|DateTime|✅|Atualiza uma nova data do consumo.
+|Hora consumo|String|✅|Atualiza uma hora ao consumo do eletrodomestico.
+|Quantidade Watts|Int|✅|Atualiza uma quantidade de Watts gerada pelo eletrodomestico.
+
+**Códigos de status**
+
+`200` Alterado com sucesso.
+`404` Id não encontrado.
+`400` validação falhou.
+
+---
+
+**Schema**
+
+```js
+{
+    "consumoId": 1,
+    "data_Consumo": "2024-12-31",
+    "hora_Consumo": 15,
+    "quantidade_Watts": 15
+}
+```
 
 
 
